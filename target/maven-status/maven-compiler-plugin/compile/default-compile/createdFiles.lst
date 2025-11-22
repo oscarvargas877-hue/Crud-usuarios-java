@@ -1,6 +1,6 @@
 Vistas\UsuarioVista$1.class
-Main\cooperativamvc\CooperativaMVC.class
 modelo\UsuarioModelo.class
+main\cooperativamvc\CooperativaMVC.class
 Controlador\UsuarioControlador.class
 Vistas\UsuarioVista$2.class
 Vistas\UsuarioVista.class

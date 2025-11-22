@@ -3,9 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Vistas;
-
-import java.awt.Button;
-import javax.swing.JOptionPane;
+import javax.swing.JOptionPane;           // para mostrar mensajes bonitos
+import javax.swing.table.DefaultTableModel; // para manejar la tabla
 
 /**
  *
@@ -16,10 +15,13 @@ public class UsuarioVista extends javax.swing.JFrame {
     /**
      * Creates new form UsuarioVista
      */
+  // CONSTRUCTOR: se ejecuta cuando abrimos la ventana
     public UsuarioVista() {
-        initComponents();
+        initComponents();           // crea todos los componentes que arrastre
+        txtId.setEditable(false);   // el ID no se puede escribir (solo se muestra)
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,152 +42,329 @@ public class UsuarioVista extends javax.swing.JFrame {
         lblEdad = new javax.swing.JLabel();
         txtAlias = new javax.swing.JTextField();
         lblAlias = new javax.swing.JLabel();
-        txtClave = new javax.swing.JTextField();
         lblClave = new javax.swing.JLabel();
-        txtResultado = new java.awt.TextArea();
-        btnCrear = new java.awt.Button();
         txtId = new java.awt.TextField();
+        label1 = new java.awt.Label();
+        btnNuevo = new java.awt.Button();
+        btnActualizar = new java.awt.Button();
+        btnGuardar = new java.awt.Button();
+        btnEliminar = new java.awt.Button();
+        btnLimpiar = new java.awt.Button();
+        txtClave = new javax.swing.JPasswordField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblUsuarios = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        lblId.setFont(new java.awt.Font("Cooper Black", 0, 14)); // NOI18N
+        lblId.setForeground(new java.awt.Color(0, 153, 153));
         lblId.setText("Id");
 
+        lblNombres.setFont(new java.awt.Font("Cooper Black", 0, 14)); // NOI18N
+        lblNombres.setForeground(new java.awt.Color(0, 153, 153));
         lblNombres.setText("Nombres");
 
+        lblCedula.setFont(new java.awt.Font("Cooper Black", 0, 14)); // NOI18N
+        lblCedula.setForeground(new java.awt.Color(0, 153, 153));
         lblCedula.setText("Cédula");
 
+        lblDireccion.setFont(new java.awt.Font("Cooper Black", 0, 14)); // NOI18N
+        lblDireccion.setForeground(new java.awt.Color(0, 153, 153));
         lblDireccion.setText("Direccion");
 
+        lblEdad.setFont(new java.awt.Font("Cooper Black", 0, 14)); // NOI18N
+        lblEdad.setForeground(new java.awt.Color(0, 153, 153));
         lblEdad.setText("Edad");
 
+        lblAlias.setFont(new java.awt.Font("Cooper Black", 0, 14)); // NOI18N
+        lblAlias.setForeground(new java.awt.Color(0, 153, 153));
         lblAlias.setText("Alias");
 
+        lblClave.setFont(new java.awt.Font("Cooper Black", 0, 14)); // NOI18N
+        lblClave.setForeground(new java.awt.Color(0, 153, 153));
         lblClave.setText("Clave");
 
-        btnCrear.setActionCommand("");
-        btnCrear.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnCrear.setLabel("Crear");
-        btnCrear.setName("\n"); // NOI18N
-        btnCrear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearActionPerformed(evt);
-            }
-        });
-
         txtId.setEditable(false);
+
+        label1.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
+        label1.setForeground(new java.awt.Color(0, 153, 153));
+        label1.setText("Registro de usuario");
+
+        btnNuevo.setFont(new java.awt.Font("Cooper Black", 0, 14)); // NOI18N
+        btnNuevo.setForeground(new java.awt.Color(0, 153, 153));
+        btnNuevo.setLabel("Nuevo\n");
+
+        btnActualizar.setFont(new java.awt.Font("Cooper Black", 0, 14)); // NOI18N
+        btnActualizar.setForeground(new java.awt.Color(0, 153, 153));
+        btnActualizar.setLabel("Actualizar");
+
+        btnGuardar.setFont(new java.awt.Font("Cooper Black", 0, 14)); // NOI18N
+        btnGuardar.setForeground(new java.awt.Color(0, 153, 153));
+        btnGuardar.setLabel("Guardar");
+
+        btnEliminar.setFont(new java.awt.Font("Cooper Black", 0, 14)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(0, 153, 153));
+        btnEliminar.setLabel("Eliminar\n\n");
+
+        btnLimpiar.setFont(new java.awt.Font("Cooper Black", 0, 14)); // NOI18N
+        btnLimpiar.setForeground(new java.awt.Color(0, 153, 153));
+        btnLimpiar.setLabel("Limpiar");
+
+        tblUsuarios.setFont(new java.awt.Font("Cooper Black", 0, 14)); // NOI18N
+        tblUsuarios.setForeground(new java.awt.Color(0, 153, 153));
+        tblUsuarios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Id", "Nombres", "Cédula", "Dirección"
+            }
+        ));
+        tblUsuarios.setGridColor(new java.awt.Color(0, 204, 204));
+        tblUsuarios.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        tblUsuarios.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setViewportView(tblUsuarios);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblClave)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 419, Short.MAX_VALUE)
-                        .addComponent(txtResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblId)
+                                .addComponent(lblNombres)
+                                .addComponent(lblCedula)
+                                .addComponent(lblEdad)
+                                .addComponent(lblDireccion)))
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtClave)
+                                    .addComponent(txtAlias, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                                    .addComponent(txtDireccion)
+                                    .addComponent(txtCedula)
+                                    .addComponent(txtNombres)
+                                    .addComponent(txtEdad, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(29, 29, 29))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblAlias)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblDireccion)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblId)
-                                            .addComponent(lblNombres)
-                                            .addComponent(lblCedula)))
-                                    .addComponent(lblEdad)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(53, 53, 53)
-                                        .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(23, 23, 23)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtClave, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                                    .addComponent(txtAlias, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtDireccion, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtCedula, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNombres, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtEdad)
-                                    .addComponent(txtId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(lblClave))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(210, 210, 210))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(373, 373, 373)
+                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 510, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblId)
-                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNombres)
-                    .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCedula)
-                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDireccion)
-                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblId)
+                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblNombres)
+                            .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblCedula)
+                            .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblDireccion)
+                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtAlias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblAlias))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblClave)
+                            .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblEdad)
+                            .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtAlias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblAlias))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblClave))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEdad)
-                    .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(70, 70, 70)
-                .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(153, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCrearActionPerformed
-  //AÑADIR ENCAPSULAMIENTO
-        public String getCampoNombre(){
-        return txtNombres.getText();
+  
+    // MÉTODOS PARA OBTENER LO QUE EL USUARIO ESCRIBE
+    
+    // Devuelve lo que está escrito en el campo Nombres
+    public String getTxtNombres() { 
+        return txtNombres.getText(); 
     }
-        public String getCampoCedula(){
-         return txtCedula.getText();
-        }
-        public String getCampoDireccion(){
-            return txtDireccion.getText();
-        }
-        public int getCampoEdad(){
-            return Integer.parseInt(txtEdad.getText());
-        }
-        public String getCampoAlias(){
-            return txtAlias.getText();
-        }
-        public String getCampoClave(){
-         return txtClave.getText();
-        }
-        public Button getCampoCrear(){
-            return btnCrear;
-        }
-        public void setCampoResultado(String mensaje){
-            txtResultado.setText(mensaje);
-        }
-        public void mostrarMensaje(String mensaje){
-            JOptionPane.showMessageDialog(rootPane, mensaje);
-        }
+    
+    // Devuelve la cédula escrita
+    public String getTxtCedula() { 
+        return txtCedula.getText(); 
+    }
+    
+    // Devuelve la dirección
+    public String getTxtDireccion() { 
+        return txtDireccion.getText(); 
+    }
+    
+    // Devuelve, devuelve el alias
+    public String getTxtAlias() { 
+        return txtAlias.getText(); 
+    }
+    
+    // Devuelve la clave (contraseña) - aunque sea JPasswordField
+    public String getTxtClave() { 
+        return new String(txtClave.getPassword()); 
+    }
+    
+    // Devuelve la edad escrita
+    public String getTxtEdad() { 
+        return txtEdad.getText(); 
+    }
+    
+    // Devuelve el ID (solo para mostrar)
+    public String getTxtId() { 
+        return txtId.getText(); 
+    }
+
+
+    // MÉTODOS PARA PONER DATOS EN LOS CAMPOS
+    // (cuando hacemos clic en la tabla)
+
+    
+    // Pone un nombre en el campo Nombres
+    public void setTxtNombres(String texto) { 
+        txtNombres.setText(texto); 
+    }
+    
+    // Pone una cédula
+    public void setTxtCedula(String texto) { 
+        txtCedula.setText(texto); 
+    }
+    
+    // Pone una dirección
+    public void setTxtDireccion(String texto) { 
+        txtDireccion.setText(texto); 
+    }
+    
+    // Pone un alias
+    public void setTxtAlias(String texto) { 
+        txtAlias.setText(texto); 
+    }
+    
+    // Pone una clave (contraseña)
+    public void setTxtClave(String texto) { 
+        txtClave.setText(texto); 
+    }
+    
+    // Pone una edad
+    public void setTxtEdad(String texto) { 
+        txtEdad.setText(texto); 
+    }
+    
+    // Pone el ID del usuario seleccionado
+    public void setTxtId(String texto) { 
+        txtId.setText(texto); 
+    }
+
+    // MÉTODOS PARA LOS BOTONES
+    
+    // Devuelve el botón Nuevo
+    public java.awt.Button getBtnNuevo() { 
+        return btnNuevo; 
+    }
+    
+    // Devuelve el botón Guardar
+    public java.awt.Button getBtnGuardar() { 
+        return btnGuardar; 
+    }
+    
+    // Devuelve el botón Actualizar
+    public java.awt.Button getBtnActualizar() { 
+        return btnActualizar; 
+    }
+    
+    // Devuelve el botón Eliminar
+    public java.awt.Button getBtnEliminar() { 
+        return btnEliminar; 
+    }
+    
+    // Devuelve el botón Limpiar
+    public java.awt.Button getBtnLimpiar() { 
+        return btnLimpiar; 
+    }
+
+    // MÉTODOS PARA LA TABLA
+    
+    // Devuelve la tabla para poder usarla desde el controlador
+    public javax.swing.JTable getTblUsuarios() { 
+        return tblUsuarios; 
+    }
+    
+    // Actualiza toda la tabla con nuevos datos
+    public void actualizarTabla(DefaultTableModel modelo) {
+        tblUsuarios.setModel(modelo);
+    }
+
+    // MÉTODO PARA LIMPIAR TODOS LOS CAMPOS
+    
+    public void limpiarCampos() {
+        txtId.setText("");          // borra el ID
+        txtNombres.setText("");     // borra nombres
+        txtCedula.setText("");      // borra cédula
+        txtDireccion.setText("");   // borra dirección
+        txtAlias.setText("");       // borra alias
+        txtClave.setText("");       // borra clave
+        txtEdad.setText("");        // borra edad
+    }
+
+    // MÉTODO PARA MOSTRAR MENSAJES AL USUARIO
+    
+    public void mostrarMensaje(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+    }
+
         
     /**
      * @param args the command line arguments
@@ -223,7 +402,13 @@ public class UsuarioVista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button btnCrear;
+    private java.awt.Button btnActualizar;
+    private java.awt.Button btnEliminar;
+    private java.awt.Button btnGuardar;
+    private java.awt.Button btnLimpiar;
+    private java.awt.Button btnNuevo;
+    private javax.swing.JScrollPane jScrollPane1;
+    private java.awt.Label label1;
     private javax.swing.JLabel lblAlias;
     private javax.swing.JLabel lblCedula;
     private javax.swing.JLabel lblClave;
@@ -231,14 +416,14 @@ public class UsuarioVista extends javax.swing.JFrame {
     private javax.swing.JLabel lblEdad;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblNombres;
+    private javax.swing.JTable tblUsuarios;
     private javax.swing.JTextField txtAlias;
     private javax.swing.JTextField txtCedula;
-    private javax.swing.JTextField txtClave;
+    private javax.swing.JPasswordField txtClave;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtEdad;
     private java.awt.TextField txtId;
     private javax.swing.JTextField txtNombres;
-    private java.awt.TextArea txtResultado;
     // End of variables declaration//GEN-END:variables
 
 }
