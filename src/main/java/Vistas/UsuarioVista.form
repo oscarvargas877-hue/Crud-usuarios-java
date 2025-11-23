@@ -60,20 +60,15 @@
                           </Group>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblAlias" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblClave" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="lblAlias" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblClave" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Component id="btnEliminar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                      <Component id="btnLimpiar" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnBuscar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -139,7 +134,7 @@
                   <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
                   <Component id="btnNuevo" min="-2" max="-2" attributes="0"/>
                   <Component id="btnEliminar" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnLimpiar" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnBuscar" min="-2" max="-2" attributes="0"/>
                   <Component id="btnActualizar" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="62" max="32767" attributes="0"/>
@@ -295,7 +290,7 @@
         <Property name="label" type="java.lang.String" value="Eliminar&#xa;&#xa;"/>
       </Properties>
     </Component>
-    <Component class="java.awt.Button" name="btnLimpiar">
+    <Component class="java.awt.Button" name="btnBuscar">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Cooper Black" size="14" style="0"/>
@@ -303,7 +298,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="99" green="99" red="0" type="rgb"/>
         </Property>
-        <Property name="label" type="java.lang.String" value="Limpiar"/>
+        <Property name="label" type="java.lang.String" value="Buscar por c&#xe9;dula&#xa;"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="txtClave">

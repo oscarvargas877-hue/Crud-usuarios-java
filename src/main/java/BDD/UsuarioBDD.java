@@ -250,4 +250,58 @@ public class UsuarioBDD {
         // Si no encontró nada o hubo error → devuelve null
         return null;
     }
+    
+    // BUSCAR usuario por cédula en la base de datos
+    public UsuarioModelo buscarUsuarioPorCedula(String cedulaBuscada) {
+        // Conectar a la base de datos
+        ConexionBDD objetoConexion = new ConexionBDD();
+        Connection conexionActual = objetoConexion.conectar();
+
+        // Si la conexión funciona
+        if (conexionActual != null) {
+            try {
+                // Consulta SQL para buscar por cédula
+                String sentenciaSQL = "SELECT * FROM usuario WHERE cedula = ?";
+                PreparedStatement sentenciaPreparada = conexionActual.prepareStatement(sentenciaSQL);
+
+                // Reemplazar ? con la cédula que buscamos
+                sentenciaPreparada.setString(1, cedulaBuscada);
+
+                // Ejecutar consulta
+                ResultSet resultadoConsulta = sentenciaPreparada.executeQuery();
+
+                // Si encontró un usuario
+                if (resultadoConsulta.next()) {
+                    // Crear objeto usuario con los datos encontrados
+                    UsuarioModelo usuarioEncontrado = new UsuarioModelo();
+                    usuarioEncontrado.setId(resultadoConsulta.getInt("idusuarioPK"));
+                    usuarioEncontrado.setNombres(resultadoConsulta.getString("nombres"));
+                    usuarioEncontrado.setCedula(resultadoConsulta.getString("cedula"));
+                    usuarioEncontrado.setDireccion(resultadoConsulta.getString("direccion"));
+                    usuarioEncontrado.setAlias(resultadoConsulta.getString("alias"));
+                    usuarioEncontrado.setClave(resultadoConsulta.getString("clave"));
+                    usuarioEncontrado.setEdad(resultadoConsulta.getInt("edad"));
+
+                    // Cerrar conexiones
+                    resultadoConsulta.close();
+                    sentenciaPreparada.close();
+                    conexionActual.close();
+
+                    // Devolver usuario encontrado
+                    return usuarioEncontrado;
+                }
+
+                // Cerrar conexiones si no encontró
+                resultadoConsulta.close();
+                sentenciaPreparada.close();
+                conexionActual.close();
+
+            } catch (SQLException error) {
+                System.out.println("Error al buscar usuario: " + error.getMessage());
+            }
+        }
+
+        // Si no encontró o hubo error
+        return null;
+    }
 }

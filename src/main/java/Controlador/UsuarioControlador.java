@@ -24,7 +24,7 @@ public class UsuarioControlador {
     private UsuarioBDD baseDatos;           // para hablar con MySQL
     private int idUsuarioSeleccionado = 0;  // guarda el ID del usuario que estamos editando
 
-    // === CONSTRUCTOR: SE EJECUTA CUANDO CREAMOS EL CONTROLADOR ===
+    //  CONSTRUCTOR: SE EJECUTA CUANDO CREAMOS EL CONTROLADOR 
     public UsuarioControlador(UsuarioModelo modelo, UsuarioVista vista) {
         this.modelo = modelo;
         this.vista = vista;
@@ -35,12 +35,17 @@ public class UsuarioControlador {
         vista.getBtnGuardar().addActionListener(e -> botonGuardar());
         vista.getBtnActualizar().addActionListener(e -> botonActualizar());
         vista.getBtnEliminar().addActionListener(e -> botonEliminar());
-        vista.getBtnLimpiar().addActionListener(e -> botonLimpiar());
+        vista.getBtnBuscar().addActionListener(e -> botonBuscar());
+       
 
-        // CUANDO HACEMOS CLIC EN UNA FILA DE LA TABLA → CARGAR DATOS
+        // CUANDO HACEMOS CLIC EN UNA FILA DE LA TABLA  CARGAR DATOS
+        // Escuchar cuando el usuario hace clic en cualquier fila de la tabla
         vista.getTblUsuarios().getSelectionModel().addListSelectionListener(e -> {
-            if (!e.getValueIsAdjusting() && vista.getTblUsuarios().getSelectedRow() != -1) {
+            // Solo procesar si el clic ya terminó y hay una fila seleccionada
+            if (!e.getValueIsAdjusting() && vista.getTblUsuarios().getSelectedRow() != -1) {//getSelectedRow(): para identificar específicamente qué registro de la tabla ha seleccionado el usuario
+                // Obtener qué fila fue clickeada (0 = primera, 1 = segunda, etc.)
                 int fila = vista.getTblUsuarios().getSelectedRow();
+                // Cargar los datos de esa fila al formulario para editar
                 cargarUsuarioParaEditar(fila);
             }
         });
@@ -53,7 +58,7 @@ public class UsuarioControlador {
     private void botonNuevo() {
         vista.limpiarCampos();
         idUsuarioSeleccionado = 0;
-        vista.getBtnGuardar().setEnabled(true);
+        vista.getBtnGuardar().setEnabled(true);// setEneabled(): controla si un componente puede o no ser usado por el usuario.
         vista.getBtnActualizar().setEnabled(false);
         vista.getBtnEliminar().setEnabled(false);
     }
@@ -81,7 +86,7 @@ public class UsuarioControlador {
             vista.mostrarMensaje("Seleccione un usuario de la tabla");
             return;
         }
-        if (!validarCampos()) return;
+        if (!validarCampos()) return;//Si la validación falló, sal del método y no actualices."
 
         modelo.setNombres(vista.getTxtNombres());
         modelo.setCedula(vista.getTxtCedula());
@@ -112,15 +117,11 @@ public class UsuarioControlador {
         }
     }
 
-    // BOTÓN LIMPIAR
-    private void botonLimpiar() {
-        botonNuevo();
-    }
 
       // CUANDO HACEMOS CLIC EN UNA FILA  CARGAR DATOS PARA EDITAR
     private void cargarUsuarioParaEditar(int fila) {
         // TOMAMOS EL ID REAL DE LA PRIMERA COLUMNA DE LA TABLA
-        idUsuarioSeleccionado = (int) vista.getTblUsuarios().getValueAt(fila, 0);
+        idUsuarioSeleccionado = (int) vista.getTblUsuarios().getValueAt(fila, 0);//getValueAt(fila, columna) te permite leer el contenido de cualquier celda de la tabla, sabiendo su posición de fila y columna.
 
         // BUSCAMOS EL USUARIO CON ESE ID REAL
         UsuarioModelo usuario = baseDatos.buscarUsuarioPorId(idUsuarioSeleccionado);
@@ -175,7 +176,7 @@ public class UsuarioControlador {
     // VALIDAR CAMPOS + CÉDULA
     private boolean validarCampos() {
         if (vista.getTxtNombres().isEmpty() || vista.getTxtCedula().isEmpty() ||
-            vista.getTxtDireccion().isEmpty() || vista.getTxtAlias().isEmpty() ||
+            vista.getTxtDireccion().isEmpty() || vista.getTxtAlias().isEmpty() ||//.isEmpty(): asegura que todos los campos tengan datos antes de guardar?
             vista.getTxtClave().isEmpty() || vista.getTxtEdad().isEmpty()) {
             vista.mostrarMensaje("Todos los campos son obligatorios");
             return false;
@@ -192,11 +193,52 @@ public class UsuarioControlador {
         }
         return true;
     }
+    
+    // BOTÓN BUSCAR - Buscar usuario por cédula
+        private void botonBuscar() {
+            // Pedir cédula al usuario
+            String cedulaABuscar = JOptionPane.showInputDialog("Ingrese cédula a buscar:");
+
+            // Verificar que no canceló y no está vacío
+            if (cedulaABuscar != null && !cedulaABuscar.isEmpty()) {
+                // Buscar usuario en la base de datos
+                UsuarioModelo usuario = baseDatos.buscarUsuarioPorCedula(cedulaABuscar);
+
+                if (usuario != null) {
+                    // Usuario encontrado - cargar en formulario
+                    cargarUsuarioEnFormulario(usuario);
+                    vista.mostrarMensaje(" Usuario encontrado: " + usuario.getNombres());
+                } else {
+                    // Usuario no encontrado
+                    vista.mostrarMensaje(" Usuario con cédula " + cedulaABuscar + " no encontrado");
+                }
+            }
+        }
+        
+        // Cargar usuario en formulario para editar
+        private void cargarUsuarioEnFormulario(UsuarioModelo usuario) {
+            // Guardar ID del usuario encontrado
+            idUsuarioSeleccionado = usuario.getId();
+
+            // Cargar todos los datos en los campos
+            vista.setTxtId(String.valueOf(usuario.getId()));
+            vista.setTxtNombres(usuario.getNombres());
+            vista.setTxtCedula(usuario.getCedula());
+            vista.setTxtDireccion(usuario.getDireccion());
+            vista.setTxtAlias(usuario.getAlias());
+            vista.setTxtClave(usuario.getClave());
+            vista.setTxtEdad(String.valueOf(usuario.getEdad()));
+
+            // Activar botones de edición
+            vista.getBtnGuardar().setEnabled(false);
+            vista.getBtnActualizar().setEnabled(true);
+            vista.getBtnEliminar().setEnabled(true);
+        }
 
     // MOSTRAR LA VENTANA
     public void iniciar() {
         vista.setVisible(true);
-        vista.setLocationRelativeTo(null);
+        vista.setLocationRelativeTo(null);//centra la ventana en medio de la pantalla para que se vea más profesional."
         vista.getBtnActualizar().setEnabled(false);
         vista.getBtnEliminar().setEnabled(false);
     }

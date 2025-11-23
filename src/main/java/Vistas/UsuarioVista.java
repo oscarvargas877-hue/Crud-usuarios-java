@@ -49,7 +49,7 @@ public class UsuarioVista extends javax.swing.JFrame {
         btnActualizar = new java.awt.Button();
         btnGuardar = new java.awt.Button();
         btnEliminar = new java.awt.Button();
-        btnLimpiar = new java.awt.Button();
+        btnBuscar = new java.awt.Button();
         txtClave = new javax.swing.JPasswordField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblUsuarios = new javax.swing.JTable();
@@ -106,9 +106,9 @@ public class UsuarioVista extends javax.swing.JFrame {
         btnEliminar.setForeground(new java.awt.Color(0, 153, 153));
         btnEliminar.setLabel("Eliminar\n\n");
 
-        btnLimpiar.setFont(new java.awt.Font("Cooper Black", 0, 14)); // NOI18N
-        btnLimpiar.setForeground(new java.awt.Color(0, 153, 153));
-        btnLimpiar.setLabel("Limpiar");
+        btnBuscar.setFont(new java.awt.Font("Cooper Black", 0, 14)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(0, 153, 153));
+        btnBuscar.setLabel("Buscar por cédula\n");
 
         tblUsuarios.setFont(new java.awt.Font("Cooper Black", 0, 14)); // NOI18N
         tblUsuarios.setForeground(new java.awt.Color(0, 153, 153));
@@ -162,17 +162,14 @@ public class UsuarioVista extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                                 .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(20, 20, 20))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAlias)
-                            .addComponent(lblClave))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(lblAlias)
+                    .addComponent(lblClave))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42)
-                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -223,7 +220,7 @@ public class UsuarioVista extends javax.swing.JFrame {
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
@@ -330,9 +327,9 @@ public class UsuarioVista extends javax.swing.JFrame {
         return btnEliminar; 
     }
     
-    // Devuelve el botón Limpiar
-    public java.awt.Button getBtnLimpiar() { 
-        return btnLimpiar; 
+    // Boton buscar
+    public java.awt.Button getBtnBuscar() { 
+        return btnBuscar; 
     }
 
     // MÉTODOS PARA LA TABLA
@@ -403,9 +400,9 @@ public class UsuarioVista extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button btnActualizar;
+    private java.awt.Button btnBuscar;
     private java.awt.Button btnEliminar;
     private java.awt.Button btnGuardar;
-    private java.awt.Button btnLimpiar;
     private java.awt.Button btnNuevo;
     private javax.swing.JScrollPane jScrollPane1;
     private java.awt.Label label1;

@@ -34,7 +34,7 @@ public class UsuarioModelo {
     }
 
  
-    public int getId() { 
+    public int getId() { //metodo publico permitimos el acceso controlado desde otras clases del sistema que necesitan interactuar con los datos del modelo
         return id; 
     }
     public void setId(int id) { 
