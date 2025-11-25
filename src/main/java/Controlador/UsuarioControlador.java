@@ -152,6 +152,7 @@ public class UsuarioControlador {
         tabla.addColumn("Cédula");
         tabla.addColumn("Dirección");
         tabla.addColumn("Edad");
+        tabla.addColumn("Alias");
 
         for (UsuarioModelo u : baseDatos.obtenerTodosLosUsuarios()) {
             Object[] fila = {
@@ -159,12 +160,23 @@ public class UsuarioControlador {
                 u.getNombres(),
                 u.getCedula(),
                 u.getDireccion(),
-                u.getEdad()
+                u.getEdad(),
+                u.getAlias()
             };
             tabla.addRow(fila);
         }
 
         vista.actualizarTabla(tabla);
+        
+        //AJUSTAR ANCHO DE COLUMNAS
+        javax.swing.JTable tablaUsuarios = vista.getTblUsuarios();
+        tablaUsuarios.getColumnModel().getColumn(0).setPreferredWidth(40);   // ID
+        tablaUsuarios.getColumnModel().getColumn(1).setPreferredWidth(150);  // Nombres
+        tablaUsuarios.getColumnModel().getColumn(2).setPreferredWidth(100);  // Cédula
+        tablaUsuarios.getColumnModel().getColumn(3).setPreferredWidth(200);  // Dirección
+        tablaUsuarios.getColumnModel().getColumn(4).setPreferredWidth(50);   // Edad
+        tablaUsuarios.getColumnModel().getColumn(5).setPreferredWidth(80);   // Alias
+    
         
         // DECORACIÓN BONITA
         vista.getTblUsuarios().setBackground(new java.awt.Color(245, 250, 255));

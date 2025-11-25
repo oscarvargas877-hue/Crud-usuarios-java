@@ -4,11 +4,11 @@
  */
 package BDD;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.PreparedStatement;// Import para consultas seguras a la base de datos evita inyección SQL
+import java.sql.ResultSet;// Import para manejar resultados de consultas SELECT
+import java.sql.SQLException;// Import para capturar errores específicos de MySQL
+import java.util.ArrayList;// Import para crear listas dinámicas que pueden crecer
+import java.util.List;// Import para usar el tipo List en variables y métodos
 import modelo.UsuarioModelo;
 /**
  *
