@@ -73,11 +73,15 @@ public class UsuarioControlador {
         modelo.setAlias(vista.getTxtAlias());
         modelo.setClave(vista.getTxtClave());
         modelo.setEdad(Integer.parseInt(vista.getTxtEdad()));
-
+        
+  
+        
+        //BDD
         baseDatos.insertarNuevoUsuario(modelo);
         cargarTablaUsuarios();
         botonNuevo();
         vista.mostrarMensaje("¡Usuario creado con éxito!");
+        
     }
 
     // BOTÓN ACTUALIZAR  MODIFICA EL USUARIO SELECCIONADO
@@ -94,11 +98,15 @@ public class UsuarioControlador {
         modelo.setAlias(vista.getTxtAlias());
         modelo.setClave(vista.getTxtClave());
         modelo.setEdad(Integer.parseInt(vista.getTxtEdad()));
-
+        
+   
+        
+        //BDD
         baseDatos.actualizarUsuarioExistente(modelo, idUsuarioSeleccionado);
         cargarTablaUsuarios();
         botonNuevo();
         vista.mostrarMensaje("¡Usuario actualizado correctamente!");
+   
     }
 
     // BOTÓN ELIMINAR
@@ -140,6 +148,8 @@ public class UsuarioControlador {
             vista.getBtnGuardar().setEnabled(false);
             vista.getBtnActualizar().setEnabled(true);
             vista.getBtnEliminar().setEnabled(true);
+            
+           
         }
     }
 
@@ -153,6 +163,7 @@ public class UsuarioControlador {
         tabla.addColumn("Dirección");
         tabla.addColumn("Edad");
         tabla.addColumn("Alias");
+   
 
         for (UsuarioModelo u : baseDatos.obtenerTodosLosUsuarios()) {
             Object[] fila = {
@@ -161,7 +172,8 @@ public class UsuarioControlador {
                 u.getCedula(),
                 u.getDireccion(),
                 u.getEdad(),
-                u.getAlias()
+                u.getAlias(),
+                
             };
             tabla.addRow(fila);
         }
@@ -176,6 +188,7 @@ public class UsuarioControlador {
         tablaUsuarios.getColumnModel().getColumn(3).setPreferredWidth(200);  // Dirección
         tablaUsuarios.getColumnModel().getColumn(4).setPreferredWidth(50);   // Edad
         tablaUsuarios.getColumnModel().getColumn(5).setPreferredWidth(80);   // Alias
+      
     
         
         // DECORACIÓN BONITA
@@ -204,6 +217,8 @@ public class UsuarioControlador {
             return false;
         }
         return true;
+        
+    
     }
     
     // BOTÓN BUSCAR - Buscar usuario por cédula
@@ -245,6 +260,8 @@ public class UsuarioControlador {
             vista.getBtnGuardar().setEnabled(false);
             vista.getBtnActualizar().setEnabled(true);
             vista.getBtnEliminar().setEnabled(true);
+            
+           
         }
 
     // MOSTRAR LA VENTANA

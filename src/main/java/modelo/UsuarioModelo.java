@@ -18,6 +18,7 @@ public class UsuarioModelo {
     private String alias;
     private String clave;
     private int edad;
+ 
 
     public UsuarioModelo() {
         
@@ -87,6 +88,9 @@ public class UsuarioModelo {
     public void setEdad(int edad) {
         this.edad = edad;
     }
+  
+    
+    
     //VALIDAR CEDULA
      public boolean validarCedula(String cedula) {
         int sumImpar = 0, sumPar = 0, sumTot = 0, digtFinal = 0;
@@ -135,6 +139,8 @@ public class UsuarioModelo {
                 "Edad:"+getEdad()+"\n"+
                 "Dirección:"+getDireccion()+"\n"+
                 "Alias:"+getAlias()+"\n"+
-                "Clave:"+getClave();}
+                "Clave:"+getClave();
+            
+    }
     
 }

@@ -31,8 +31,8 @@ public class UsuarioBDD {
             
             try {
                 // Consulta SQL para insertar un nuevo usuario
-                // Los signos ? son lugares seguros donde pondremos los datos
-                String sentenciaSQL = "INSERT INTO usuario (nombres, cedula, direccion, alias, clave, edad) VALUES (?, ?, ?, ?, ?, ?)";
+                // Los signos ? son lugares seguros donde pondremos los datos --JCOMBOBOX ROL
+                String sentenciaSQL = "INSERT INTO usuario (nombres, cedula, direccion, alias, clave, edad, ) VALUES (?, ?, ?, ?, ?, ?)";
                 
                 // Preparamos la consulta (es más seguro que concatenar texto)
                 PreparedStatement sentenciaPreparada = conexionActual.prepareStatement(sentenciaSQL);
@@ -44,6 +44,7 @@ public class UsuarioBDD {
                 sentenciaPreparada.setString(4, usuario.getAlias());       // 4to ? = alias
                 sentenciaPreparada.setString(5, usuario.getClave());       // 5to ? = clave
                 sentenciaPreparada.setInt(6, usuario.getEdad());           // 6to ? = edad (número)
+          
 
                 // Ejecutamos la inserción → guarda el usuario en la tabla
                 sentenciaPreparada.executeUpdate();
@@ -73,8 +74,8 @@ public class UsuarioBDD {
         // Si se conectó bien
         if (conexionActual != null) {
             try {
-                // Consulta para modificar TODOS los campos del usuario con ese ID
-                String sentenciaSQL = "UPDATE usuario SET nombres=?, cedula=?, direccion=?, alias=?, clave=?, edad=? WHERE idusuarioPK=?";
+                // Consulta para modificar TODOS los campos del usuario con ese ID 
+                String sentenciaSQL = "UPDATE usuario SET nombres=?, cedula=?, direccion=?, alias=?, clave=?, edad=?,  WHERE idusuarioPK=?";
                 
                 // Preparamos la consulta
                 PreparedStatement sentenciaPreparada = conexionActual.prepareStatement(sentenciaSQL);
@@ -87,7 +88,7 @@ public class UsuarioBDD {
                 sentenciaPreparada.setString(5, usuario.getClave());
                 sentenciaPreparada.setInt(6, usuario.getEdad());
                 sentenciaPreparada.setInt(7, idUsuario);  // este es el ID del usuario que queremos cambiar
-
+                
                 // Ejecutamos la actualización
                 sentenciaPreparada.executeUpdate();
 
@@ -172,7 +173,6 @@ public class UsuarioBDD {
                     usuarioTemporal.setAlias(resultadoConsulta.getString("alias"));
                     usuarioTemporal.setClave(resultadoConsulta.getString("clave"));
                     usuarioTemporal.setEdad(resultadoConsulta.getInt("edad"));
-                    
                     // Agregamos el usuario a la lista
                     listaUsuarios.add(usuarioTemporal);
                 }
@@ -227,6 +227,8 @@ public class UsuarioBDD {
                     usuarioEncontrado.setAlias(resultadoConsulta.getString("alias"));
                     usuarioEncontrado.setClave(resultadoConsulta.getString("clave"));
                     usuarioEncontrado.setEdad(resultadoConsulta.getInt("edad"));
+                   
+                    
 
                     // Cerramos todo
                     resultadoConsulta.close();
@@ -281,6 +283,7 @@ public class UsuarioBDD {
                     usuarioEncontrado.setAlias(resultadoConsulta.getString("alias"));
                     usuarioEncontrado.setClave(resultadoConsulta.getString("clave"));
                     usuarioEncontrado.setEdad(resultadoConsulta.getInt("edad"));
+                  
 
                     // Cerrar conexiones
                     resultadoConsulta.close();
